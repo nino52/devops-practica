@@ -1,19 +1,17 @@
-
 name: Notificación a ntfy
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
 
 jobs:
-  enviar-alerta:
+  notificar:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout del código
-        uses: actions/checkout@v3
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
 
       - name: Enviar notificación a ntfy
         run: |
-          curl -d "Se ha subido código nuevo al repositorio en la rama main 🚀" ntfy.sh/devops-itla
+          curl -d "Se subió código al repositorio (branch main)" https://ntfy.sh/devops-itla
